@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRF ΧΑΠ – Βιτρίνα (ΝΠΣ)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <h1>CRF ΧΑΠ – Βιτρίνα</h1>
+    <p>Καταχώρηση δεδομένων • Εξαγωγή σε CSV (Excel)</p>
+  </header>
+
+  <main class="container">
+    <form id="crfForm">
+      <section class="card">
+        <h2>🆔 Ταυτότητα</h2>
+        <div class="grid">
+          <label>ΝΠΣ (NPS)
+            <input type="text" name="NPS" id="NPS" required placeholder="π.χ. NPS-0001">
+          </label>
+          <label>Ενότητα
+            <select name="Section" id="Section" required>
+              <option value="">— Επιλέξτε —</option>
+              <option>Δημογραφικά/Ιστορικό</option>
+              <option>T0</option>
+              <option>T1</option>
+              <option>T2</option>
+              <option>T3</option>
+              <option>Σταθερή φάση</option>
+              <option>Reh1</option>
+            </select>
+          </label>
+          <label>Ημερομηνία
+            <input type="date" name="Ημερομηνία">
+          </label>
+        </div>
+      </section>
+
+      <section class="card section" data-section="Δημογραφικά/Ιστορικό">
+        <h2>👤 Δημογραφικά / ΧΑΠ Ιστορικό</h2>
+        <div class="grid">
+          <label>Ηλικία<input type="number" name="Ηλικία" min="18" max="100"></label>
+          <label>Φύλο
+            <select name="Φύλο">
+              <option value="">—</option>
+              <option>Άνδρας</option>
+              <option>Γυναίκα</option>
+            </select>
+          </label>
+          <label>BMI<input type="number" step="0.1" name="BMI"></label>
+          <label>Κάπνισμα
+            <select name="Κάπνισμα">
+              <option value="">—</option>
+              <option>Ενεργός</option>
+              <option>Πρώην</option>
+              <option>Ποτέ</option>
+            </select>
+          </label>
+          <label>Pack-years<input type="number" step="0.1" name="Pack-years"></label>
+          <label>FEV1 (L)<input type="number" step="0.01" name="FEV1 (L)"></label>
+          <label>FEV1 (% προβλ.)<input type="number" step="0.1" name="FEV1 (% προβλ.)"></label>
+          <label>FVC (L)<input type="number" step="0.01" name="FVC (L)"></label>
+          <label>FVC (% προβλ.)<input type="number" step="0.1" name="FVC (% προβλ.)"></label>
+          <label>FEV1/FVC (%)<input type="number" step="0.1" name="FEV1/FVC (%)"></label>
+          <label>GOLD στάδιο
+            <select name="GOLD στάδιο">
+              <option value="">—</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+            </select>
+          </label>
+          <label>mMRC<input type="number" step="1" min="0" max="4" name="mMRC"></label>
+          <label>CAT score<input type="number" step="1" min="0" max="40" name="CAT score"></label>
+          <label>Παροξύνσεις τελευταίου έτους<input type="number" step="1" min="0" name="Παροξύνσεις τελευταίου έτους"></label>
+          <label>Νοσηλείες τελευταίου έτους<input type="number" step="1" min="0" name="Νοσηλείες τελευταίου έτους"></label>
+        </div>
+      </section>
+
+      <section class="card section" data-section="T0">
+        <h2>🏥 T0 (Εισαγωγή)</h2>
+        <div class="grid">
+          <label>Hb (g/dL)<input type="number" step="0.1" name="Hb (g/dL)"></label>
+          <label>Hct (%)<input type="number" step="0.1" name="Hct (%)"></label>
+          <label>WBC (10^9/L)<input type="number" step="0.1" name="WBC (10^9/L)"></label>
+          <label>Ουδετερόφιλα<input type="number" step="0.1" name="Ουδετερόφιλα"></label>
+          <label>Λεμφοκύτταρα<input type="number" step="0.1" name="Λεμφοκύτταρα"></label>
+          <label>Μονοκύτταρα<input type="number" step="0.1" name="Μονοκύτταρα"></label>
+          <label>Ηωσινόφιλα<input type="number" step="0.1" name="Ηωσινόφιλα"></label>
+          <label>Βασεόφιλα<input type="number" step="0.1" name="Βασεόφιλα"></label>
+          <label>Αιμοπετάλια (PLT)<input type="number" step="1" name="Αιμοπετάλια (PLT)"></label>
+          <label>MCV (fL)<input type="number" step="0.1" name="MCV (fL)"></label>
+          <label>MCH (pg)<input type="number" step="0.1" name="MCH (pg)"></label>
+          <label>MCHC (g/dL)<input type="number" step="0.1" name="MCHC (g/dL)"></label>
+          <label>RDW (%)<input type="number" step="0.1" name="RDW (%)"></label>
+          <label>CRP (mg/L)<input type="number" step="0.1" name="CRP (mg/L)"></label>
+          <label>Ινωδογόνο (mg/dL)<input type="number" step="0.1" name="Ινωδογόνο (mg/dL)"></label>
+          <label>D-dimers (μg/mL FEU)<input type="number" step="0.01" name="D-dimers (μg/mL FEU)"></label>
+          <label>Ολική χοληστερίνη (mg/dL)<input type="number" step="1" name="Ολική χοληστερίνη (mg/dL)"></label>
+          <label>LDL (mg/dL)<input type="number" step="1" name="LDL (mg/dL)"></label>
+          <label>HDL (mg/dL)<input type="number" step="1" name="HDL (mg/dL)"></label>
+          <label>Τριγλυκερίδια (mg/dL)<input type="number" step="1" name="Τριγλυκερίδια (mg/dL)"></label>
+          <label>Κρεατινίνη (mg/dL)<input type="number" step="0.01" name="Κρεατινίνη (mg/dL)"></label>
+          <label>Αλβουμίνη ούρων (mg/L)<input type="number" step="0.1" name="Αλβουμίνη ούρων (mg/L)"></label>
+          <label>Κρεατινίνη ούρων (mg/dL)<input type="number" step="0.1" name="Κρεατινίνη ούρων (mg/dL)"></label>
+        </div>
+      </section>
+
+      <section class="card section" data-section="T1">
+        <h2>⏱️ T1 (24–36h)</h2>
+        <div class="grid">
+          <label>CRP (mg/L)<input type="number" step="0.1" name="CRP (mg/L)"></label>
+          <label>Αλβουμίνη ούρων (mg/L)<input type="number" step="0.1" name="Αλβουμίνη ούρων (mg/L)"></label>
+          <label>Κρεατινίνη ούρων (mg/dL)<input type="number" step="0.1" name="Κρεατινίνη ούρων (mg/dL)"></label>
+        </div>
+      </section>
+
+      <section class="card section" data-section="T2">
+        <h2>⏱️ T2 (72h)</h2>
+        <div class="grid">
+          <label>CRP (mg/L)<input type="number" step="0.1" name="CRP (mg/L)"></label>
+          <label>Αλβουμίνη ούρων (mg/L)<input type="number" step="0.1" name="Αλβουμίνη ούρων (mg/L)"></label>
+          <label>Κρεατινίνη ούρων (mg/dL)<input type="number" step="0.1" name="Κρεατινίνη ούρων (mg/dL)"></label>
+        </div>
+      </section>
+
+      <section class="card section" data-section="T3">
+        <h2>🏁 T3 (Εξιτήριο)</h2>
+        <div class="grid">
+          <label>CRP (mg/L)<input type="number" step="0.1" name="CRP (mg/L)"></label>
+          <label>Ινωδογόνο (mg/dL)<input type="number" step="0.1" name="Ινωδογόνο (mg/dL)"></label>
+          <label>D-dimers (μg/mL FEU)<input type="number" step="0.01" name="D-dimers (μg/mL FEU)"></label>
+          <label>Ολική χοληστερίνη (mg/dL)<input type="number" step="1" name="Ολική χοληστερίνη (mg/dL)"></label>
+          <label>LDL (mg/dL)<input type="number" step="1" name="LDL (mg/dL)"></label>
+          <label>HDL (mg/dL)<input type="number" step="1" name="HDL (mg/dL)"></label>
+          <label>Τριγλυκερίδια (mg/dL)<input type="number" step="1" name="Τριγλυκερίδια (mg/dL)"></label>
+          <label>Κρεατινίνη (mg/dL)<input type="number" step="0.01" name="Κρεατινίνη (mg/dL)"></label>
+          <label>Αλβουμίνη ούρων (mg/L)<input type="number" step="0.1" name="Αλβουμίνη ούρων (mg/L)"></label>
+          <label>Κρεατινίνη ούρων (mg/dL)<input type="number" step="0.1" name="Κρεατινίνη ούρων (mg/dL)"></label>
+        </div>
+      </section>
+
+      <section class="card section" data-section="Σταθερή φάση">
+        <h2>🌿 Σταθερή φάση (30–45 ημέρες)</h2>
+        <div class="grid">
+          <label>CRP (mg/L)<input type="number" step="0.1" name="CRP (mg/L)"></label>
+          <label>Ινωδογόνο (mg/dL)<input type="number" step="0.1" name="Ινωδογόνο (mg/dL)"></label>
+          <label>Ολική χοληστερίνη (mg/dL)<input type="number" step="1" name="Ολική χοληστερίνη (mg/dL)"></label>
+          <label>LDL (mg/dL)<input type="number" step="1" name="LDL (mg/dL)"></label>
+          <label>HDL (mg/dL)<input type="number" step="1" name="HDL (mg/dL)"></label>
+          <label>Τριγλυκερίδια (mg/dL)<input type="number" step="1" name="Τριγλυκερίδια (mg/dL)"></label>
+          <label>Αλβουμίνη ούρων (mg/L)<input type="number" step="0.1" name="Αλβουμίνη ούρων (mg/L)"></label>
+          <label>Κρεατινίνη ούρων (mg/dL)<input type="number" step="0.1" name="Κρεατινίνη ούρων (mg/dL)"></label>
+          <label>FEV1 (L)<input type="number" step="0.01" name="FEV1 (L)"></label>
+          <label>FEV1 (% προβλ.)<input type="number" step="0.1" name="FEV1 (% προβλ.)"></label>
+          <label>FVC (L)<input type="number" step="0.01" name="FVC (L)"></label>
+          <label>FVC (% προβλ.)<input type="number" step="0.1" name="FVC (% προβλ.)"></label>
+          <label>FEV1/FVC (%)<input type="number" step="0.1" name="FEV1/FVC (%)"></label>
+          <label>CAT score<input type="number" step="1" min="0" max="40" name="CAT score"></label>
+        </div>
+      </section>
+
+      <section class="card section" data-section="Reh1">
+        <h2>🔁 Επανεισαγωγή 1</h2>
+        <div class="grid">
+          <label>CRP (mg/L)<input type="number" step="0.1" name="CRP (mg/L)"></label>
+          <label>Ινωδογόνο (mg/dL)<input type="number" step="0.1" name="Ινωδογόνο (mg/dL)"></label>
+          <label>D-dimers (μg/mL FEU)<input type="number" step="0.01" name="D-dimers (μg/mL FEU)"></label>
+          <label>Ολική χοληστερίνη (mg/dL)<input type="number" step="1" name="Ολική χοληστερίνη (mg/dL)"></label>
+          <label>LDL (mg/dL)<input type="number" step="1" name="LDL (mg/dL)"></label>
+          <label>HDL (mg/dL)<input type="number" step="1" name="HDL (mg/dL)"></label>
+          <label>Τριγλυκερίδια (mg/dL)<input type="number" step="1" name="Τριγλυκερίδια (mg/dL)"></label>
+          <label>Αλβουμίνη ούρων (mg/L)<input type="number" step="0.1" name="Αλβουμίνη ούρων (mg/L)"></label>
+          <label>Κρεατινίνη ούρων (mg/dL)<input type="number" step="0.1" name="Κρεατινίνη ούρων (mg/dL)"></label>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="submit">Αποθήκευση τοπικά</button>
+        <button type="button" id="exportBtn">Εξαγωγή CSV</button>
+        <span id="status"></span>
+      </div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <small>CRF ΧΑΠ – Πανεπιστημιακό Νοσοκομείο Ιωαννίνων</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
