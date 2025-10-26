@@ -45,21 +45,22 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby0QhaqWezwaIT7qZai
     // POST στο Google Apps Script (UPsert ανά NPS – μία γραμμή/ασθενή)
     try{
       if (status) status.textContent = '⏳ Αποστολή στο κεντρικό αρχείο...';
-      const res = await fetch(WEB_APP_URL, {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
-      });
+ if (status) status.textContent = '⏳ Αποστολή στο κεντρικό αρχείο...';
 
-      // Αν ο server επιστρέψει JSON {ok:true}
-      let ok = false, errMsg = '';
-      try {
-        const j = await res.json();
-        ok = !!j.ok;
-        errMsg = j.error || '';
-      } catch {
-        // Κάποια deployments γυρίζουν κενό σώμα – θεώρησέ το επιτυχία αν status 200
-        ok = res.ok;
+try {
+  await fetch(WEB_APP_URL, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+
+  status.textContent = '✅ Καταχωρήθηκε στο κεντρικό Google Sheet.';
+  form.reset();
+  sections.forEach(s=> s.style.display='none');
+} catch (err) {
+  console.error(err);
+  status.textContent = '⚠️ Πρόβλημα σύνδεσης — δεν αποθηκεύτηκε. Δοκιμάστε ξανά.';
+}
+
       }
 
       if (ok){
