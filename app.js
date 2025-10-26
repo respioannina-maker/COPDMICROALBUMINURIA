@@ -8,9 +8,16 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby0QhaqWezwaIT7qZai
   const form       = document.getElementById('crfForm');
 
   function showSection(name){
-    sections.forEach(s => s.style.display = (s.dataset.section === name) ? 'block' : 'none');
+    const key = (name || '').toString().trim();
+    sections.forEach(s => {
+      const tag = (s.dataset.section || '').toString().trim();
+      s.style.display = (key && tag === key) ? 'block' : 'none';
+    });
   }
-  sectionSel?.addEventListener('change', e => showSection(e.target.value));
+
+  // αρχικοποίηση
+  showSection(sectionSel ? sectionSel.value : '');
+  sectionSel && sectionSel.addEventListener('change', e => showSection(e.target.value));
 
   function serializeForm(formEl){
     const fd = new FormData(formEl);
@@ -19,33 +26,27 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby0QhaqWezwaIT7qZai
     return obj;
   }
 
-  form?.addEventListener('submit', async (e)=>{
+  form && form.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const payload = serializeForm(form);
 
     if (!payload['NPS'] || !payload['Section']){
-      status.textContent = "Συμπληρώστε NPS και Ενότητα.";
+      status && (status.textContent = "Συμπληρώστε NPS και Ενότητα.");
       return;
     }
 
-    // Timestamp για debug στο Sheet
     payload['timestamp'] = new Date().toISOString();
-
-    status.textContent = "⏳ Αποστολή στο κεντρικό αρχείο...";
+    status && (status.textContent = "⏳ Αποστολή στο κεντρικό αρχείο...");
 
     try {
-      await fetch(WEB_APP_URL, {
-        method: "POST",
-        body: JSON.stringify(payload)
-      });
-
-      status.textContent = "✅ Καταχωρήθηκε στο Google Sheet.";
+      // Χωρίς headers για να αποφύγουμε CORS preflight
+      await fetch(WEB_APP_URL, { method: "POST", body: JSON.stringify(payload) });
+      status && (status.textContent = "✅ Καταχωρήθηκε στο Google Sheet.");
       form.reset();
       sections.forEach(s=> s.style.display='none');
-    } 
-    catch (err) {
+    } catch (err) {
       console.error(err);
-      status.textContent = "⚠️ Πρόβλημα σύνδεσης. Δοκιμάστε ξανά.";
+      status && (status.textContent = "⚠️ Πρόβλημα σύνδεσης. Δοκιμάστε ξανά.");
     }
   });
 })();
