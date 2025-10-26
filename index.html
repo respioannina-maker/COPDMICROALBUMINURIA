@@ -4,6 +4,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Νεανικό στιλ: γραμματοσειρά + απλό theme -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef5ff; --card:#ffffff; --text:#1b1f2a; --muted:#6b7280; --accent:#00a3a3; --accent2:#2dd4bf;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);padding:20px}
+  h1{margin:0 0 16px;text-align:center;font-weight:600;letter-spacing:.2px}
+  h2{margin:0 0 10px;font-weight:600}
+  form{max-width:920px;margin:0 auto}
+  .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:16px;margin:14px 0;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+  label{display:block;margin:10px 0;color:var(--muted);font-size:.95rem}
+  input, select{width:100%;padding:10px 12px;border:1px solid #e5e7eb;border-radius:12px;font-size:1rem;color:var(--text);background:#fff;outline:none}
+  input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(45,212,191,.2)}
+  button[type=submit]{width:100%;padding:14px 16px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;letter-spacing:.3px;cursor:pointer}
+  button[type=submit]:hover{filter:brightness(1.05)}
+  #status{margin-top:10px;text-align:center;font-weight:600;color:var(--accent)}
+  /* μικρή απόσταση στα πεδία */
+  .section h2{margin-top:4px}
+</style>
 <title>CRF COPD Study</title>
 <style>
   body { font-family: Arial; padding: 20px; max-width: 900px; margin:auto; }
